@@ -1,24 +1,64 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false |
+| first_name         | string | null: false |
+| family_name        | string | null: false |
+| date_of_birth      | date   | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :purchases
 
-* Configuration
+## items テーブル
 
-* Database creation
+| Column              | Type       | Options     |
+| ------------------- | ---------- | ----------- |
+| name                | string     | null: false |
+| description         | text       | null: false |
+| category            | string     | null: false |
+| condition           | string     | null: false |
+| shipping_fee_charge | string     | null: false |
+| sender_area         | string     | null: false |
+| price               | integer    | null: false |
+| shipping_time       | string     | null: false |
+| seller              | references | null: false, foreign_key: true |
+### Association
 
-* Database initialization
+- has_one :purchase
+- belongs_to :user
 
-* How to run the test suite
+## purchases テーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| item_ordered | references | null: false, foreign_key: true |
+| buyer        | references | null: false, foreign_key: true |
+| address      | references | null: false, foreign_key: true |
 
-* Deployment instructions
+### Association
 
-* ...
+- belongs_to :user
+- belongs_to :item
+- has_one :address
+
+## addresses テーブル
+
+| Column       | Type   | Options     |
+| ------------ | ------ | ----------- |
+| zip_code     | string | null: false |
+| state        | string | null: false |
+| city         | string | null: false |
+| street       | string | null: false |
+| building     | string | |
+| phone_number | string | null: false |
+
+### Association
+
+- belongs_to :address
