@@ -24,12 +24,12 @@
 | ---------------------- | ---------- | ----------- |
 | name                   | string     | null: false |
 | description            | text       | null: false |
-| category               | integer    | null: false |
-| condition              | integer    | null: false |
-| shipping_fee_charge    | integer    | null: false |
-| state                  | integer    | null: false |
+| category_id            | integer    | null: false |
+| condition_id           | integer    | null: false |
+| shipping_fee_charge_id | integer    | null: false |
+| state_id               | integer    | null: false |
 | price                  | integer    | null: false |
-| shipping_time          | integer    | null: false |
+| shipping_time_id       | integer    | null: false |
 | user                   | references | null: false, foreign_key: true |
 
 ### Association
@@ -60,7 +60,7 @@
 | Column       | Type       | Options     |
 | ------------ | ---------- | ----------- |
 | zip_code     | string     | null: false |
-| state        | integer    | null: false |
+| state_id     | integer    | null: false |
 | city         | string     | null: false |
 | street       | string     | null: false |
 | building     | string     | |
