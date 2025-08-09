@@ -24,13 +24,14 @@
 | ---------------------- | ---------- | ----------- |
 | name                   | string     | null: false |
 | description            | text       | null: false |
-| category_id            | integer    | null: false |
-| condition_id           | integer    | null: false |
-| shipping_fee_charge_id | integer    | null: false |
-| state_id               | integer    | null: false |
+| category               | integer    | null: false |
+| condition              | integer    | null: false |
+| shipping_fee_charge    | integer    | null: false |
+| state                  | integer    | null: false |
 | price                  | integer    | null: false |
-| shipping_time_id       | integer    | null: false |
-| user_id                | references | null: false, foreign_key: true |
+| shipping_time          | integer    | null: false |
+| user                   | references | null: false, foreign_key: true |
+
 ### Association
 
 - has_one :purchase
@@ -43,11 +44,11 @@
 
 ## purchases テーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| item_id    | references | null: false, foreign_key: true |
-| user_id    | references | null: false, foreign_key: true |
-| address_id | references | null: false, foreign_key: true |
+| Column  | Type       | Options                        |
+| --------| ---------- | ------------------------------ |
+| item    | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
+| address | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -60,7 +61,7 @@
 | Column       | Type    | Options     |
 | ------------ | ------- | ----------- |
 | zip_code     | string  | null: false |
-| state_id     | integer | null: false |
+| state        | integer | null: false |
 | city         | string  | null: false |
 | street       | string  | null: false |
 | building     | string  | |
