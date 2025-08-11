@@ -66,6 +66,13 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
       end
 
+      it '全角文字を含むパスワードでは登録できない' do
+        @user.password = 'ａｂｃ123'
+        @user.password_confirmation = 'ａｂｃ123'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
+      end
+
       it 'family_nameが空では登録できない' do
         @user.family_name = ''
         @user.valid?
@@ -123,8 +130,7 @@ RSpec.describe User, type: :model do
 
     context '新規登録ができる場合' do
       it 'nickname,email,password,password_confirmation,first_name,family_name,first_name_kana,family_name_kana,date_of_birthが存在すれば登録できる' do
-        user = FactoryBot.build(:user)
-        expect(user).to be_valid
+        expect(@user).to be_valid
       end
     end
   end  
