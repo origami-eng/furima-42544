@@ -14,3 +14,4 @@ function handling_cost (){
 };
 
 window.addEventListener('turbo:load', handling_cost);
+window.addEventListener("turbo:render", handling_cost);
