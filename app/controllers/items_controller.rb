@@ -21,6 +21,19 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
   end
+
+  def edit
+    @item = Item.find(params[:id])
+    redirect_to root_path unless @item.user_id == current_user.id
+  end
+
+  def update
+    if @item = Item.update(item_params)
+      redirect_to item_path(@item)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
   
   private
   def item_params
