@@ -18,7 +18,6 @@ class PurchasesController < ApplicationController
       @purchase_address.save
       return redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
       render "purchases/index", status: :unprocessable_entity
     end
