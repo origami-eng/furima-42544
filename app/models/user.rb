@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :purchases
+  has_many :items
+
   with_options presence: true, format: { with: /\A[ぁ-んァ-ヶー-龥々－]+\z/, message: '全角文字を使用してください' } do
     validates :first_name
     validates :family_name
